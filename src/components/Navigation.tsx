@@ -1,4 +1,4 @@
-import { Adb, MenuOpenOutlined } from "@mui/icons-material";
+import { GitHub, MenuOpenOutlined } from "@mui/icons-material";
 import {
   AppBar,
   Box,
@@ -48,7 +48,6 @@ const Navigation = (props: navProps) => {
     <AppBar position="static">
       <Container maxWidth="xl">
         <Toolbar disableGutters>
-          <Adb sx={{ display: { xs: "none", md: "flex" }, mr: 1 }} />
           <Typography
             variant="h6"
             noWrap
@@ -103,7 +102,7 @@ const Navigation = (props: navProps) => {
               ))}
             </Menu>
           </Box>
-          <Adb sx={{ display: { xs: "flex", md: "none" }, mr: 1 }} />
+
           <Typography
             variant="h5"
             noWrap
@@ -137,7 +136,7 @@ const Navigation = (props: navProps) => {
           <Box sx={{ flexGrow: 0, display: "none" }}>
             <Tooltip title="Open settings">
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
+                <Avatar alt="Bastien Fajs" src="/static/images/avatar/2.jpg" />
               </IconButton>
             </Tooltip>
             <Menu
@@ -167,7 +166,9 @@ const Navigation = (props: navProps) => {
             checked={props.toggleDark}
             onChange={handleModeChange}
             name="toggleDark"
+            sx={{ display: "none" }}
           />
+          <GitHub />
         </Toolbar>
       </Container>
     </AppBar>

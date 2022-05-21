@@ -30,7 +30,7 @@ const App = () => {
     <BrowserRouter>
       <ThemeProvider theme={theme}>
         <CssBaseline />
-        <Navigation setToggleDark={setToggleDark} />
+        <Navigation toggleDark={toggleDark} setToggleDark={setToggleDark} />
         <Routes>
           <Route path="/" element={<Home />} />
         </Routes>

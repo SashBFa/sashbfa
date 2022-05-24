@@ -1,12 +1,12 @@
 import { ParallaxHead } from "../components/animation/ParallaxHead";
 import { ParallaxProvider } from "react-scroll-parallax";
-import Header from "../components/Header";
+import Projects from "../components/projects/Projects";
 
 const Home = () => {
   return (
     <ParallaxProvider>
       <ParallaxHead />
-      <Header />
+      <Projects />
     </ParallaxProvider>
   );
 };

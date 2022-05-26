@@ -16,9 +16,23 @@ export const ParallaxHead = () => {
     shouldAlwaysCompleteAnimation: true,
     expanded: false,
     children: (
-      <div className="inset center">
-        <h1>Bastien Fajs</h1>
-        <h2>FrontEnd Dev</h2>
+      <div
+        style={{
+          position: "absolute",
+          inset: 0,
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "flex-start",
+          paddingTop: "200px",
+          maxWidth: "500px",
+          margin: "0 auto",
+        }}
+      >
+        <img
+          src="./assets/images/Sash.png"
+          alt="logo"
+          style={{ width: "100%" }}
+        />
       </div>
     ),
   };
@@ -34,13 +48,21 @@ export const ParallaxHead = () => {
     opacity: [0, 1, "easeOutCubic"],
     shouldAlwaysCompleteAnimation: true,
     expanded: false,
-    children: <div className="gradient inset" />,
+    children: (
+      <div
+        style={{
+          position: "absolute",
+          inset: 0,
+          background: "linear-gradient(rgba(14, 62, 151, 0.5) 50%, #121212)",
+        }}
+      />
+    ),
   };
 
   return (
     <ParallaxBanner
       layers={[background, headline, foreground, gradientOverlay]}
-      className="full"
+      style={{ height: "100vh" }}
     />
   );
 };

@@ -1,41 +1,27 @@
-import { createTheme, ThemeProvider } from "@mui/material/styles";
-import { CssBaseline } from "@mui/material";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import { orange, red, yellow } from "@mui/material/colors";
-import { useState } from "react";
 import Home from "./pages/home";
 import Navigation from "./components/Navigation";
+import { createTheme, CssBaseline, ThemeProvider } from "@mui/material";
 
 const App = () => {
-  const [toggleDark, setToggleDark] = useState<boolean>(true);
   const theme = createTheme({
     palette: {
+      mode: "dark",
       primary: {
-        main: yellow.A400,
+        main: "#ff951c",
       },
-      secondary: {
-        main: yellow.A700,
-      },
-      warning: {
-        main: orange[500],
-      },
-      error: {
-        main: red.A400,
-      },
-      mode: toggleDark ? "dark" : "light",
     },
   });
-
   return (
-    <BrowserRouter>
-      <ThemeProvider theme={theme}>
-        <CssBaseline />
-        <Navigation toggleDark={toggleDark} setToggleDark={setToggleDark} />
+    <ThemeProvider theme={theme}>
+      <CssBaseline />
+      <BrowserRouter>
+        <Navigation />
         <Routes>
           <Route path="/" element={<Home />} />
         </Routes>
-      </ThemeProvider>
-    </BrowserRouter>
+      </BrowserRouter>
+    </ThemeProvider>
   );
 };
 

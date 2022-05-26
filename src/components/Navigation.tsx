@@ -1,47 +1,29 @@
-import { GitHub, MenuOpenOutlined } from "@mui/icons-material";
-import {
-  AppBar,
-  Box,
-  IconButton,
-  Button,
-  Container,
-  Switch,
-  Toolbar,
-  MenuItem,
-  Tooltip,
-  Avatar,
-  Menu,
-  Typography,
-} from "@mui/material";
-import { useState } from "react";
+import * as React from "react";
+import AppBar from "@mui/material/AppBar";
+import Box from "@mui/material/Box";
+import Toolbar from "@mui/material/Toolbar";
+import IconButton from "@mui/material/IconButton";
+import Typography from "@mui/material/Typography";
+import Menu from "@mui/material/Menu";
+import MenuIcon from "@mui/icons-material/Menu";
+import Container from "@mui/material/Container";
+import Button from "@mui/material/Button";
+import MenuItem from "@mui/material/MenuItem";
+import { Call } from "@mui/icons-material";
 
-interface navProps {
-  setToggleDark: React.Dispatch<React.SetStateAction<boolean>>;
-  toggleDark: boolean;
-}
-const pages = ["Products", "Pricing", "Blog"];
-const settings = ["Profile", "Account", "Dashboard", "Logout"];
+const pages = ["Products", "About me", "Contact"];
 
-const Navigation = (props: navProps) => {
-  const [anchorElNav, setAnchorElNav] = useState<null | HTMLElement>(null);
-  const [anchorElUser, setAnchorElUser] = useState<null | HTMLElement>(null);
+const Navigation = () => {
+  const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(
+    null
+  );
 
   const handleOpenNavMenu = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorElNav(event.currentTarget);
   };
-  const handleOpenUserMenu = (event: React.MouseEvent<HTMLElement>) => {
-    setAnchorElUser(event.currentTarget);
-  };
 
   const handleCloseNavMenu = () => {
     setAnchorElNav(null);
-  };
-
-  const handleCloseUserMenu = () => {
-    setAnchorElUser(null);
-  };
-  const handleModeChange = () => {
-    props.setToggleDark(!props.toggleDark);
   };
 
   return (
@@ -63,7 +45,11 @@ const Navigation = (props: navProps) => {
               textDecoration: "none",
             }}
           >
-            SashBFa
+            <img
+              src="./assets/images/SashMini.png"
+              alt="logo"
+              style={{ height: "3rem" }}
+            />
           </Typography>
 
           <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
@@ -75,7 +61,7 @@ const Navigation = (props: navProps) => {
               onClick={handleOpenNavMenu}
               color="inherit"
             >
-              <MenuOpenOutlined />
+              <MenuIcon />
             </IconButton>
             <Menu
               id="menu-appbar"
@@ -119,7 +105,11 @@ const Navigation = (props: navProps) => {
               textDecoration: "none",
             }}
           >
-            SashBFa
+            <img
+              src="./assets/images/SashMini.png"
+              alt="logo"
+              style={{ height: "2rem" }}
+            />
           </Typography>
           <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
             {pages.map((page) => (
@@ -133,46 +123,21 @@ const Navigation = (props: navProps) => {
             ))}
           </Box>
 
-          <Box sx={{ flexGrow: 0, display: "none" }}>
-            <Tooltip title="Open settings">
-              <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                <Avatar alt="Bastien Fajs" src="/static/images/avatar/2.jpg" />
-              </IconButton>
-            </Tooltip>
-            <Menu
-              sx={{ mt: "45px" }}
-              id="menu-appbar"
-              anchorEl={anchorElUser}
-              anchorOrigin={{
-                vertical: "top",
-                horizontal: "right",
-              }}
-              keepMounted
-              transformOrigin={{
-                vertical: "top",
-                horizontal: "right",
-              }}
-              open={Boolean(anchorElUser)}
-              onClose={handleCloseUserMenu}
-            >
-              {settings.map((setting) => (
-                <MenuItem key={setting} onClick={handleCloseUserMenu}>
-                  <Typography textAlign="center">{setting}</Typography>
-                </MenuItem>
-              ))}
-            </Menu>
-          </Box>
-          <Switch
-            checked={props.toggleDark}
-            onChange={handleModeChange}
-            name="toggleDark"
-            sx={{ display: "none" }}
-          />
-          <GitHub />
+          <Button
+            variant="contained"
+            sx={{ flexGrow: 0, display: { xs: "none", md: "flex" } }}
+          >
+            contact me
+          </Button>
+          <IconButton
+            color="primary"
+            sx={{ flexGrow: 0, display: { xs: "flex", md: "none" } }}
+          >
+            <Call />
+          </IconButton>
         </Toolbar>
       </Container>
     </AppBar>
   );
 };
-
 export default Navigation;

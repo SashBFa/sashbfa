@@ -1,13 +1,13 @@
-import { ParallaxHead } from "../components/animation/ParallaxHead";
+import { ParallaxHead } from "../components/ParallaxHead";
 import { ParallaxProvider } from "react-scroll-parallax";
-import Projects from "../components/projects/Projects";
 
 const Home = () => {
   return (
-    <ParallaxProvider>
-      <ParallaxHead />
-      <Projects />
-    </ParallaxProvider>
+    <div>
+      <ParallaxProvider>
+        <ParallaxHead />
+      </ParallaxProvider>
+    </div>
   );
 };
 
